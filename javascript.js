@@ -16,3 +16,10 @@ function getComputerChoice() {
         return "scissors";
     }
 }
+
+// Take user choice of "rock", "paper", or "scissors" and return it
+function getHumanChoice() {
+    // PROMPT user for appropriate input
+
+    // Return user input
+}
