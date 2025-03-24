@@ -20,6 +20,7 @@ function getComputerChoice() {
 // Take user choice of "rock", "paper", or "scissors" and return it
 function getHumanChoice() {
     // PROMPT user for appropriate input
+    let humanChoice = prompt("Which weapon do you choose?");
 
-    // Return user input
+    return humanChoice.toLowerCase();
 }
