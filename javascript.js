@@ -1,3 +1,6 @@
+// Initialize game scores
+let humanScore = 0, computerScore = 0;
+
 console.log("Welcome to Rock-Paper-Scissors!");
 
 // Return random computer choice of either "rock", "paper", or "scissors"
