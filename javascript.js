@@ -25,7 +25,7 @@ function getComputerChoice() {
 function getHumanChoice() {
 
     // PROMPT user for appropriate input
-    let humanChoice = prompt("Which weapon do you choose?");
+    let humanChoice = prompt("Which weapon do you choose? ( Rock | Paper | Scissors )");
 
     // Capitalize first letter, lowercase the rest
     humanChoice = humanChoice.slice(0,1).toUpperCase() + humanChoice.slice(1,).toLowerCase();
@@ -67,6 +67,7 @@ function playGame() {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
+        console.log(`ROUND ${i + 1}`);
         playRound(humanSelection, computerSelection);
     }
 
