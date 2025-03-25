@@ -5,27 +5,32 @@ console.log("Welcome to Rock-Paper-Scissors!");
 
 // Return random computer choice of either "rock", "paper", or "scissors"
 function getComputerChoice() {
-    // Initialize a temp variable and set its value to a random number between one and three
+
+    // Generate random number between one and three
     let randomNumber = Math.floor(Math.random() * 3) + 1;
 
     // Return option according to value of randomNumber
     if (randomNumber === 1) {
-        return "rock";
+        return "Rock";
     }
     if (randomNumber === 2) {
-        return "paper";
+        return "Paper";
     }
     if (randomNumber === 3) {
-        return "scissors";
+        return "Scissors";
     }
 }
 
 // Take user choice of "rock", "paper", or "scissors" and return it
 function getHumanChoice() {
+
     // PROMPT user for appropriate input
     let humanChoice = prompt("Which weapon do you choose?");
 
-    return humanChoice.toLowerCase();
+    // Capitalize first letter, lowercase the rest
+    humanChoice = humanChoice.slice(0,1).toUpperCase() + humanChoice.slice(1,).toLowerCase();
+
+    return humanChoice;
 }
 
 // Run one round of rock-paper-scissors
@@ -33,12 +38,12 @@ function playRound(humanChoice, computerChoice) {
 
     // Conditions for human to win
     const humanWins = (
-        ( humanChoice === "rock" && computerChoice === "scissors" ) ||
-        ( humanChoice === "paper" && computerChoice === "rock" ) ||
-        ( humanChoice === "scissors" && computerChoice === "paper" )
+        ( humanChoice === "Rock" && computerChoice === "Scissors" ) ||
+        ( humanChoice === "Paper" && computerChoice === "Rock" ) ||
+        ( humanChoice === "Scissors" && computerChoice === "Paper" )
     );
 
-    // IF the human and the computer choices are the same
+    // Possible outcomes for the round
     if (humanChoice === computerChoice) {
         console.log(`It's a tie! You both chose ${humanChoice}.`);
     }
