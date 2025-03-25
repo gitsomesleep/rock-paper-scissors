@@ -28,18 +28,28 @@ function getHumanChoice() {
     return humanChoice.toLowerCase();
 }
 
-// Run a round of rock-paper-scissors game given the human and computer choices
+// Run one round of rock-paper-scissors
 function playRound(humanChoice, computerChoice) {
-  // IF the human and the computer choices are the same
-  //   - It's a tie, PRINT tie-round announcement
-  // ELSE IF the human chooses "rock" and the computer chooses "scissors"
-  // OR the human chooses "paper" and the computer chooses "rock"
-  // OR the human chooses "scissors" and the computer chooses "paper"
-  //   - The human wins, PRINT round-winner announcement
-  //   - INCREMENT human score
-  // ELSE
-  //   - The computer wins, PRINT round-loser announcement
-  //   - INCREMENT computer score
+
+    // Conditions for human to win
+    const humanWins = (
+        ( humanChoice === "rock" && computerChoice === "scissors" ) ||
+        ( humanChoice === "paper" && computerChoice === "rock" ) ||
+        ( humanChoice === "scissors" && computerChoice === "paper" )
+    );
+
+    // IF the human and the computer choices are the same
+    if (humanChoice === computerChoice) {
+        console.log(`It's a tie! You both chose ${humanChoice}.`);
+    }
+    else if (humanWins) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        humanScore++;
+    }
+    else {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        computerScore++;
+    }
 }
 
 const humanSelection = getHumanChoice();
