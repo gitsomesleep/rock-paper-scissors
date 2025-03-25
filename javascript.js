@@ -21,6 +21,7 @@ function getComputerChoice() {
     }
 }
 
+
 // Take user choice of "rock", "paper", or "scissors" and return it
 function getHumanChoice() {
 
@@ -32,6 +33,7 @@ function getHumanChoice() {
 
     return humanChoice;
 }
+
 
 // Run one round of rock-paper-scissors
 function playRound(humanChoice, computerChoice) {
@@ -57,7 +59,18 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+// Play a full game
+function playGame(playRound) {
+
+    // Get choices and play a round 5 times
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+    }
+
+    // Declare winner
+    console.log(`human: ${humanScore}\ncomputer: ${computerScore}`);
+}
