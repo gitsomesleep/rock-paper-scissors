@@ -1,9 +1,8 @@
 // Initialize game scores
 let humanScore = 0, computerScore = 0;
 
-console.log("Welcome to Rock-Paper-Scissors!");
 
-// Return random computer choice of either "rock", "paper", or "scissors"
+// Return random computer choice of either "Rock", "Paper", or "Scissors"
 function getComputerChoice() {
 
     // Generate random number between one and three
@@ -21,7 +20,8 @@ function getComputerChoice() {
     }
 }
 
-// Take user choice of "rock", "paper", or "scissors" and return it
+
+// Take user choice of "Rock", "Paper", or "Scissors" and return it
 function getHumanChoice() {
 
     // PROMPT user for appropriate input
@@ -33,7 +33,8 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-// Run one round of rock-paper-scissors
+
+// Run one round of Rock-Paper-Scissors
 function playRound(humanChoice, computerChoice) {
 
     // Conditions for human to win
@@ -74,7 +75,7 @@ function playGame() {
 }
 
 
-// Declare winner
+// Display scores and declare winner
 function declareWinner() {
 
     console.log("FINAL TALLIES");
@@ -91,5 +92,9 @@ function declareWinner() {
         console.log(`You LOSE!`);
     }
 }
+
+
+// Introduce and run the console-based game
+console.log("Welcome to Rock-Paper-Scissors!");
 
 playGame();
