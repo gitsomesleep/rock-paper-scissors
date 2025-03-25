@@ -21,7 +21,6 @@ function getComputerChoice() {
     }
 }
 
-
 // Take user choice of "rock", "paper", or "scissors" and return it
 function getHumanChoice() {
 
@@ -33,7 +32,6 @@ function getHumanChoice() {
 
     return humanChoice;
 }
-
 
 // Run one round of rock-paper-scissors
 function playRound(humanChoice, computerChoice) {
@@ -61,7 +59,7 @@ function playRound(humanChoice, computerChoice) {
 
 
 // Play a full game
-function playGame(playRound) {
+function playGame() {
 
     // Get choices and play a round 5 times
     for (let i = 0; i < 5; i++) {
@@ -72,5 +70,26 @@ function playGame(playRound) {
     }
 
     // Declare winner
-    console.log(`human: ${humanScore}\ncomputer: ${computerScore}`);
+    declareWinner();  
 }
+
+
+// Declare winner
+function declareWinner() {
+
+    console.log("FINAL TALLIES");
+    console.log(`Your Score: ${humanScore}\nComputer Score: ${computerScore}`);
+
+    // Possible outcomes for the game
+    if (humanScore === computerScore) {
+        console.log(`The game's a TIE!!`);
+    }
+    else if (humanScore > computerScore) {
+        console.log(`You are the WINNER!!!`);
+    }
+    else {
+        console.log(`You LOSE!`);
+    }
+}
+
+playGame();
