@@ -62,17 +62,53 @@ function playRound(humanChoice, computerChoice) {
 // Play a full game
 function playGame() {
 
+    let choices = document.querySelector('#choices');
+
+    choices.addEventListener('click', (event) => {
+        let target = event.target;
+
+        switch(target.id) {
+            case 'rock':
+                console.log('rock menu item was clicked');
+                break;
+            case 'paper':
+                console.log('paper menu item was clicked');
+                break;
+            case 'scissors':
+                console.log('scissors menu item was clicked');
+                break;
+        }
+    });
+
+    // choices.addEventListener("click", (event) => {
+    //     let choice = event.target;
+    //     console.out(target.id);
+
+    //     switch(choice.id) {
+    //         case 'rock':
+    //             console.log('rock');
+    //             break;
+    //         case 'paper':
+    //             console.log('paper');
+    //             break;
+    //         case 'scissors':
+    //             console.log('scissors');
+    //             break;
+    //     }
+    // });
+    
+
     // Get choices and play a round 5 times
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+    // for (let i = 0; i < 5; i++) {
+    //     const humanSelection = getHumanChoice();
+    //     const computerSelection = getComputerChoice();
 
-        console.log(`ROUND ${i + 1}`);
-        playRound(humanSelection, computerSelection);
-    }
+    //     console.log(`ROUND ${i + 1}`);
+    //     playRound(humanSelection, computerSelection);
+    // // }
 
-    // Declare winner
-    declareWinner();  
+    // // Declare winner
+    // declareWinner();  
 }
 
 
