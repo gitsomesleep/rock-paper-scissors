@@ -3,14 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rock-paper-scissors</title>
+    <title>Rock-Paper-Scissors</title>
     <script src="javascript.js" defer></script>
 </head>
 <body>
-    <container class="choices" id="choices">
-        <button class="choice" id="rock">Rock</button>
-        <button class="choice" id="paper">Paper</button>
-        <button class="choice" id="scissors">Scissors</button>
-    </container>
+    <!-- title  -->
+    <div id="game-title"><h1>Rock-Paper-Scissors</h1></div>
+
+    <!-- running scores -->
+    <div id="score-board">
+        <div class="player-card" id="human-player">
+            <div class="player-name">HUMAN</div>
+            <div class="player-score">0</div>
+        </div>
+        <div id="vs">VS</div>
+        <div class="player-card" id="computer-player">
+            <div class="player-name">COMPUTER</div>
+            <div class="player-score">0</div>
+        </div>
+    </div>
+
+    <!-- choices  (disappear when end game)-->
+     <div id="gameplay-container">
+        <div id="instruct-play"><h2>SELECT A WEAPON</h2></div>
+        <div id="weapon-options">
+            <button class="weapon-option" id="rock">Rock</button>
+            <button class="option" id="paper">Paper</button>
+            <button class="option" id="scissors">Scissors</button>
+        </div>
+    </div>
+
+    <!-- Win/Lose/Tie Message (each round, then first to 5pts end of game) -->
+    <div id="winner-announcement"><p>First to 5 points wins the game.</p></div>
+
 </body>
 </html>
