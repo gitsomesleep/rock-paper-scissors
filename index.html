@@ -11,37 +11,37 @@
     <!-- title  -->
     <div id="game-title"><h1>Rock-Paper-Scissors</h1></div>
 
-    <!-- running scores -->
-    <div id="score-board">
-        <div class="player-card" id="human-player">
-            <div class="player-name">HUMAN</div>
-            <div class="player-score">0</div>
+    <div id="game-container">
+        <!-- running scores -->
+        <div id="score-board">
+            <div class="player-card" id="human-player">
+                <div class="player-name">HUMAN</div>
+                <div class="player-score">0</div>
+            </div>
+            <div id="vs">VS</div>
+            <div class="player-card" id="computer-player">
+                <div class="player-name">COMPUTER</div>
+                <div class="player-score">0</div>
+            </div>
         </div>
-        <div id="vs">VS</div>
-        <div class="player-card" id="computer-player">
-            <div class="player-name">COMPUTER</div>
-            <div class="player-score">0</div>
+        <!-- choices  (disappear when end game)-->
+         <div id="gameplay-container">
+            <div id="instruct-play"><h2>SELECT A WEAPON</h2></div>
+            <div id="weapon-options">
+                <a href="#" class="game-button" id="rock">
+                    <img src="images/rock.png" alt="A heavy, gray rock.">
+                  </a>
+                  <a href="#" class="game-button" id="paper">
+                    <img src="images/spool_of_paper.png" alt="A ream of brown packing paper.">
+                  </a>
+                  <a href="#" class="game-button" id="scissors">
+                    <img src="images/scissors.png" alt="A pair of shiny, silver scissors.">
+                  </a>
+            </div>
         </div>
+        <!-- Win/Lose/Tie Message (each round, then first to 5pts end of game) -->
+        <div id="game-message-section"><h2>First to 5 points wins the game.</h2></div>
     </div>
-
-    <!-- choices  (disappear when end game)-->
-     <div id="gameplay-container">
-        <div id="instruct-play"><h2>SELECT A WEAPON</h2></div>
-        <div id="weapon-options">
-            <a href="#" class="game-button" id="rock">
-                <img src="images/rock.png" alt="A heavy, gray rock.">
-              </a>
-              <a href="#" class="game-button" id="paper">
-                <img src="images/spool_of_paper.png" alt="A ream of brown packing paper.">
-              </a>
-              <a href="#" class="game-button" id="scissors">
-                <img src="images/scissors.png" alt="A pair of shiny, silver scissors.">
-              </a>
-        </div>
-    </div>
-
-    <!-- Win/Lose/Tie Message (each round, then first to 5pts end of game) -->
-    <div id="game-message-section"><h2>First to 5 points wins the game.</h2></div>
 
 </body>
 </html>
