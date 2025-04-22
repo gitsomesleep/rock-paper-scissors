@@ -2,8 +2,8 @@
 let humanScore = 0, computerScore = 0;
 
 
-// Return random computer choice of either "Rock", "Paper", or "Scissors"
-function getComputerChoice() {
+// Return random computer Selection of either "Rock", "Paper", or "Scissors"
+function getComputerSelection() {
 
     // Generate random number between one and three
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -21,39 +21,35 @@ function getComputerChoice() {
 }
 
 
-// Take user choice of "Rock", "Paper", or "Scissors" and return it
-function getHumanChoice() {
-
-    // PROMPT user for appropriate input
-    let humanChoice = prompt("Which weapon do you choose? ( Rock | Paper | Scissors )");
-
-    // Capitalize first letter, lowercase the rest
-    humanChoice = humanChoice.slice(0,1).toUpperCase() + humanChoice.slice(1,).toLowerCase();
-
-    return humanChoice;
+// Take user Selection of "Rock", "Paper", or "Scissors" and return it
+function getHumanSelection(clickedButton) {
+    // Identify which button was clicked
+    const clickedId = clickedButton.id;
+    console.log('Clicked button: ' + clickedId);
+    return clickedId;
 }
 
 
 // Run one round of Rock-Paper-Scissors
-function playRound(humanChoice, computerChoice) {
+function playRound(humanSelection, computerSelection) {
 
     // Conditions for human to win
     const humanWins = (
-        ( humanChoice === "Rock" && computerChoice === "Scissors" ) ||
-        ( humanChoice === "Paper" && computerChoice === "Rock" ) ||
-        ( humanChoice === "Scissors" && computerChoice === "Paper" )
+        ( humanSelection === "Rock" && computerSelection === "Scissors" ) ||
+        ( humanSelection === "Paper" && computerSelection === "Rock" ) ||
+        ( humanSelection === "Scissors" && computerSelection === "Paper" )
     );
 
     // Possible outcomes for the round
-    if (humanChoice === computerChoice) {
-        console.log(`It's a tie! You both chose ${humanChoice}.`);
+    if (humanSelection === computerSelection) {
+        console.log(`It's a tie! You both chose ${humanSelection}.`);
     }
     else if (humanWins) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        console.log(`You win! ${humanSelection} beats ${computerSelection}.`);
         humanScore++;
     }
     else {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        console.log(`You lose! ${computerSelection} beats ${humanSelection}.`);
         computerScore++;
     }
 }
@@ -62,53 +58,22 @@ function playRound(humanChoice, computerChoice) {
 // Play a full game
 function playGame() {
 
-    let choices = document.querySelector('#choices');
+    document.querySelectorAll('.game-button').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
 
-    choices.addEventListener('click', (event) => {
-        let target = event.target;
+            const humanSelection = getHumanSelection(this);
+            const computerSelection = getComputerSelection();
 
-        switch(target.id) {
-            case 'rock':
-                console.log('rock menu item was clicked');
-                break;
-            case 'paper':
-                console.log('paper menu item was clicked');
-                break;
-            case 'scissors':
-                console.log('scissors menu item was clicked');
-                break;
-        }
-    });
+            // console.log(`ROUND ${i + 1}`); //print what round we are on
+            playRound(humanSelection, computerSelection);
 
-    // choices.addEventListener("click", (event) => {
-    //     let choice = event.target;
-    //     console.out(target.id);
-
-    //     switch(choice.id) {
-    //         case 'rock':
-    //             console.log('rock');
-    //             break;
-    //         case 'paper':
-    //             console.log('paper');
-    //             break;
-    //         case 'scissors':
-    //             console.log('scissors');
-    //             break;
-    //     }
-    // });
-    
-
-    // Get choices and play a round 5 times
-    // for (let i = 0; i < 5; i++) {
-    //     const humanSelection = getHumanChoice();
-    //     const computerSelection = getComputerChoice();
-
-    //     console.log(`ROUND ${i + 1}`);
-    //     playRound(humanSelection, computerSelection);
-    // // }
-
-    // // Declare winner
-    // declareWinner();  
+            // Check if someone has won the game
+            if (humanScore >= 5 || computerScore >= 5) {
+                declareWinner();
+            }
+        })
+    });    
 }
 
 
