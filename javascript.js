@@ -71,6 +71,7 @@ function playGame() {
             // Check if someone has won the game
             if (humanScore >= 5 || computerScore >= 5) {
                 declareWinner();
+                humanScore = 0, computerScore = 0; // reset scores
             }
         })
     });    
