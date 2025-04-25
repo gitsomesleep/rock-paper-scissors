@@ -10,12 +10,18 @@ function getComputerSelection() {
 
     // Return option according to value of randomNumber
     if (randomNumber === 1) {
+        btn = document.getElementById("Rock");
+        btn.classList.add("chosen-by-computer");
         return "Rock";
     }
     if (randomNumber === 2) {
+        btn = document.getElementById("Paper");
+        btn.classList.add("chosen-by-computer");
         return "Paper";
     }
     if (randomNumber === 3) {
+        btn = document.getElementById("Scissors");
+        btn.classList.add("chosen-by-computer");
         return "Scissors";
     }
 }
@@ -26,6 +32,7 @@ function getHumanSelection(clickedButton) {
     // Identify which button was clicked
     const clickedId = clickedButton.id;
     console.log('Clicked button: ' + clickedId);
+    clickedButton.classList.add("chosen-by-human");
     return clickedId;
 }
 
@@ -42,6 +49,9 @@ function playRound(humanSelection, computerSelection) {
 
     // Possible outcomes for the round
     if (humanSelection === computerSelection) {
+        btn = document.getElementById(humanSelection);
+        btn.classList.remove("chosen-by-computer", "chosen-by-human");
+        btn.classList.add("tied");
         console.log(`It's a tie! You both chose ${humanSelection}.`);
     }
     else if (humanWins) {
@@ -73,6 +83,15 @@ function playGame() {
                 declareWinner();
                 humanScore = 0, computerScore = 0; // reset scores
             }
+
+            // Pause long enough to view selections before resetting selection colors
+            setTimeout(
+                () => {
+                    document.querySelectorAll('.game-button').forEach(btn => {
+                        btn.classList.remove("tied", "chosen-by-computer", "chosen-by-human");
+                    })
+                }
+            , 2000); // In the future it would be nice to also temporarily disable the buttons (and hover) here too
         })
     });    
 }

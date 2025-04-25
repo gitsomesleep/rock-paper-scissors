@@ -103,6 +103,7 @@ h1 {
 .game-button {
     box-sizing: border-box;
     border:3px solid transparent;
+    border-color: black;
 }
 
 .game-button img {
@@ -111,16 +112,16 @@ h1 {
 }
 
 .game-button:hover {
-    border-color: rgb(11, 8, 169);
+    border-color: rgb(34, 249, 38);
 }
 
 /* Styling for game round outcome */
 
 .chosen-by-human {
-    border-color: rgb(20, 241, 20);
+    border-color: rgb(34, 249, 38);
 }
 
-.chosen-by-comp {
+.chosen-by-computer {
     border-color: red;
 }
 
