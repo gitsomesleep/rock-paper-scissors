@@ -1,5 +1,7 @@
 // Initialize game scores
 let humanScore = 0, computerScore = 0;
+const humanScoreBoard = document.querySelector("#human-player");
+const computerScoreBoard = document.querySelector("#computer-player");
 
 
 // Return random computer Selection of either "Rock", "Paper", or "Scissors"
@@ -57,10 +59,12 @@ function playRound(humanSelection, computerSelection) {
     else if (humanWins) {
         console.log(`You win! ${humanSelection} beats ${computerSelection}.`);
         humanScore++;
+        humanScoreBoard.querySelector(".player-score").textContent = humanScore;
     }
     else {
         console.log(`You lose! ${computerSelection} beats ${humanSelection}.`);
         computerScore++;
+        computerScoreBoard.querySelector(".player-score").textContent = computerScore;
     }
 }
 
@@ -81,7 +85,12 @@ function playGame() {
             // Check if someone has won the game
             if (humanScore >= 5 || computerScore >= 5) {
                 declareWinner();
-                humanScore = 0, computerScore = 0; // reset scores
+                setTimeout(
+                    () => { // reset scores
+                        humanScore = 0, computerScore = 0;
+                        humanScoreBoard.querySelector(".player-score").textContent = 0, computerScoreBoard.querySelector(".player-score").textContent = 0;
+                    }, 2000
+                )
             }
 
             // Pause long enough to view selections before resetting selection colors
