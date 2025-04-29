@@ -52,7 +52,6 @@ function playRound(humanSelection, computerSelection) {
     // Possible outcomes for the round
     if (humanSelection === computerSelection) {
         btn = document.getElementById(humanSelection);
-        btn.classList.remove("chosen-by-computer", "chosen-by-human");
         btn.classList.add("tied");
         console.log(`It's a tie! You both chose ${humanSelection}.`);
     }
@@ -62,7 +61,7 @@ function playRound(humanSelection, computerSelection) {
         humanScoreBoard.querySelector(".player-score").textContent = humanScore;
 
         // Weapon selected by computer shows to losing image
-        changeImage(computerSelection, 2000);
+        changeImage(computerSelection, 1000);
     }
     else {
         console.log(`You lose! ${computerSelection} beats ${humanSelection}.`);
@@ -70,7 +69,7 @@ function playRound(humanSelection, computerSelection) {
         computerScoreBoard.querySelector(".player-score").textContent = computerScore;
 
         // Weapon selected by human shows losing image
-        changeImage(humanSelection, 2000);
+        changeImage(humanSelection, 1000);
     }
 }
 
@@ -82,6 +81,8 @@ function playGame() {
         button.addEventListener('click', function(event) {
             event.preventDefault();
 
+            disableClicks();
+    
             const humanSelection = getHumanSelection(this);
             const computerSelection = getComputerSelection();
 
@@ -89,24 +90,21 @@ function playGame() {
             playRound(humanSelection, computerSelection);
 
             // Check if someone has won the game
-            if (humanScore >= 5 || computerScore >= 5) {
-                declareWinner();
-                setTimeout(
-                    () => { // reset scores
-                        humanScore = 0, computerScore = 0;
-                        humanScoreBoard.querySelector(".player-score").textContent = 0, computerScoreBoard.querySelector(".player-score").textContent = 0;
-                    }, 2000
-                )
-            }
-
-            // Pause long enough to view selections before resetting selection colors
-            setTimeout(
+            setTimeout (
                 () => {
+                    // Remove borders designating what was selected
                     document.querySelectorAll('.game-button').forEach(btn => {
                         btn.classList.remove("tied", "chosen-by-computer", "chosen-by-human");
-                    })
+                    });
+
+                    // Check if winner and reset scores
+                    if (humanScore >= 5 || computerScore >= 5) {
+                        declareWinner();
+                        humanScore = 0, computerScore = 0;
+                        humanScoreBoard.querySelector(".player-score").textContent = 0, computerScoreBoard.querySelector(".player-score").textContent = 0;
+                    }
                 }
-            , 2000); // In the future it would be nice to also temporarily disable the buttons (and hover) here too
+            , 500);
         })
     });    
 }
@@ -120,13 +118,16 @@ function declareWinner() {
 
     // Possible outcomes for the game
     if (humanScore === computerScore) {
-        console.log(`The game's a TIE!!`);
+        console.log(c);
+        alert(`The game's a TIE!!\n\nClick \'Okay\' to restart game.`);
     }
     else if (humanScore > computerScore) {
         console.log(`You are the WINNER!!!`);
+        alert(`You are the WINNER!!!\n\nClick \'Okay\' to restart game.`);
     }
     else {
         console.log(`You LOSE!`);
+        alert(`You LOSE!\n\nClick \'Okay\' to restart game.`);
     }
 }
 
@@ -160,6 +161,26 @@ function changeImage(losingSelection, resetTime) {
         }, resetTime)
     }
 }
+
+
+// Toggling off and on click events
+
+function disableClicks() {
+    document.querySelectorAll('.game-button').forEach(btn => {
+        btn.style.pointerEvents = 'none';
+    });
+    setTimeout(enableClicks, 1000); // Re-enable after 2 seconds
+}
+
+function enableClicks() {
+    document.querySelectorAll('.game-button').forEach(btn => {
+        btn.style.pointerEvents = 'auto';
+    });
+}
+
+// element.addEventListener('click', disableClick);
+
+
 
 // Introduce and run the console-based game
 console.log("Welcome to Rock-Paper-Scissors!");

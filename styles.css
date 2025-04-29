@@ -13,13 +13,9 @@ body {
 
 body {
     background-color: aquamarine;
-    /* background-color: rgb(255, 223, 148);; */
+    user-select: none; /*No accidental highlighting when button clicks are disabled*/
 }
 
-/* Making it look like a box */
-/* #game-container {
-    background-color: aquamarine;
-} */
 
 /******************************
 *  Page heading / Game title 
