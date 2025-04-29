@@ -60,11 +60,17 @@ function playRound(humanSelection, computerSelection) {
         console.log(`You win! ${humanSelection} beats ${computerSelection}.`);
         humanScore++;
         humanScoreBoard.querySelector(".player-score").textContent = humanScore;
+
+        // Weapon selected by computer shows to losing image
+        changeImage(computerSelection, 2000);
     }
     else {
         console.log(`You lose! ${computerSelection} beats ${humanSelection}.`);
         computerScore++;
         computerScoreBoard.querySelector(".player-score").textContent = computerScore;
+
+        // Weapon selected by human shows losing image
+        changeImage(humanSelection, 2000);
     }
 }
 
@@ -124,6 +130,36 @@ function declareWinner() {
     }
 }
 
+
+function changeImage(losingSelection, resetTime) {
+    const losingButton = document.getElementById(losingSelection);
+    const img = losingButton.querySelector('img');
+
+    if (img) {
+        const originalSrc = img.src;
+        const originalAlt = img.alt;
+
+        // Change button img to losing img
+        img.src = "images/" + losingSelection.toLowerCase() + "_lose.png";
+
+        switch(losingSelection) {
+            case "Rock":
+                img.alt = "Rock wrapped up in paper";
+                break;
+            case "Paper":
+                img.alt = "Paper shredded by scissors";
+                break;
+            case "Scissors":
+                img.alt = "Scissors bashed by rock";
+                break;
+        }
+
+        setTimeout(() => {
+            img.src = originalSrc;
+            img.alt = originalAlt;
+        }, resetTime)
+    }
+}
 
 // Introduce and run the console-based game
 console.log("Welcome to Rock-Paper-Scissors!");
