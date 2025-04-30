@@ -2,6 +2,9 @@
 let humanScore = 0, computerScore = 0;
 const humanScoreBoard = document.querySelector("#human-player");
 const computerScoreBoard = document.querySelector("#computer-player");
+const winLoseMsg = document.getElementById("instruct-play").querySelector("h2");
+const gameMessage = document.getElementById("game-message-section").querySelector("h2");
+const pauseTime = 1500;
 
 
 // Return random computer Selection of either "Rock", "Paper", or "Scissors"
@@ -54,28 +57,36 @@ function playRound(humanSelection, computerSelection) {
         btn = document.getElementById(humanSelection);
         btn.classList.add("tied");
         console.log(`It's a tie! You both chose ${humanSelection}.`);
+        winLoseMsg.textContent = `It's a tie!`;
+        gameMessage.textContent = `You both chose ${humanSelection}.`;
     }
     else if (humanWins) {
         console.log(`You win! ${humanSelection} beats ${computerSelection}.`);
+        winLoseMsg.textContent = `You win this round!`;
+        gameMessage.textContent = `${humanSelection} beats ${computerSelection}.`;
         humanScore++;
         humanScoreBoard.querySelector(".player-score").textContent = humanScore;
 
         // Weapon selected by computer shows to losing image
-        changeImage(computerSelection, 1000);
+        changeImage(computerSelection, pauseTime);
     }
     else {
         console.log(`You lose! ${computerSelection} beats ${humanSelection}.`);
+        winLoseMsg.textContent = `You lose this round!`;
+        gameMessage.textContent = `${computerSelection} beats ${humanSelection}.`;
         computerScore++;
         computerScoreBoard.querySelector(".player-score").textContent = computerScore;
 
         // Weapon selected by human shows losing image
-        changeImage(humanSelection, 1000);
+        changeImage(humanSelection, pauseTime);
     }
 }
 
 
 // Play a full game
 function playGame() {
+    const originalInstruct = winLoseMsg.textContent;
+    const originalGameMsg = gameMessage.textContent;
 
     document.querySelectorAll('.game-button').forEach(button => {
         button.addEventListener('click', function(event) {
@@ -102,9 +113,13 @@ function playGame() {
                         declareWinner();
                         humanScore = 0, computerScore = 0;
                         humanScoreBoard.querySelector(".player-score").textContent = 0, computerScoreBoard.querySelector(".player-score").textContent = 0;
+                        // gameMessage.textContent = originalGameMsg;
                     }
+
+                    winLoseMsg.textContent = originalInstruct;
+                    gameMessage.textContent = originalGameMsg;
                 }
-            , 500);
+            , pauseTime);
         })
     });    
 }
@@ -169,7 +184,7 @@ function disableClicks() {
     document.querySelectorAll('.game-button').forEach(btn => {
         btn.style.pointerEvents = 'none';
     });
-    setTimeout(enableClicks, 1000); // Re-enable after 2 seconds
+    setTimeout(enableClicks, pauseTime); // Re-enable after 1 seconds
 }
 
 function enableClicks() {
