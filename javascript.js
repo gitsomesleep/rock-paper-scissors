@@ -57,11 +57,13 @@ function playRound(humanSelection, computerSelection) {
         btn = document.getElementById(humanSelection);
         btn.classList.add("tied");
         console.log(`It's a tie! You both chose ${humanSelection}.`);
+        winLoseMsg.classList.add("tied-text");
         winLoseMsg.textContent = `It's a tie!`;
         gameMessage.textContent = `You both chose ${humanSelection}.`;
     }
     else if (humanWins) {
         console.log(`You win! ${humanSelection} beats ${computerSelection}.`);
+        winLoseMsg.classList.add("win-text");
         winLoseMsg.textContent = `You win this round!`;
         gameMessage.textContent = `${humanSelection} beats ${computerSelection}.`;
         humanScore++;
@@ -72,6 +74,7 @@ function playRound(humanSelection, computerSelection) {
     }
     else {
         console.log(`You lose! ${computerSelection} beats ${humanSelection}.`);
+        winLoseMsg.classList.add("lose-text");
         winLoseMsg.textContent = `You lose this round!`;
         gameMessage.textContent = `${computerSelection} beats ${humanSelection}.`;
         computerScore++;
@@ -116,6 +119,7 @@ function playGame() {
                         // gameMessage.textContent = originalGameMsg;
                     }
 
+                    winLoseMsg.classList.remove("tied-text", "win-text", "lose-text");
                     winLoseMsg.textContent = originalInstruct;
                     gameMessage.textContent = originalGameMsg;
                 }
