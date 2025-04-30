@@ -8,7 +8,6 @@ body {
     min-height: fit-content;
     min-width: fit-content;
     margin: 0 auto;
-    /* overflow: hidden; */
 }
 
 body {
@@ -24,20 +23,14 @@ body {
 #game-title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    /* background-color: rgb(23, 23, 23); */
     background-color: black;
     font-size: x-large;
-    /* color:rgb(212, 192, 78); */
     color: rgb(255, 223, 148);
-    /* color: rgb(171, 217, 244); */
-    /* color: aquamarine; */
     margin-top: 10px;
 }
 
 h1 {
     margin: 0;
-    /* margin-top: 0;
-    margin-bottom: 20px; */
     padding: 20px 20px;
 }
 
