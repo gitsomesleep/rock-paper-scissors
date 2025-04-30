@@ -100,10 +100,9 @@ function playGame() {
             const humanSelection = getHumanSelection(this);
             const computerSelection = getComputerSelection();
 
-            // console.log(`ROUND ${i + 1}`); //print what round we are on
             playRound(humanSelection, computerSelection);
 
-            // Check if someone has won the game
+            // Pause between each round so user can view messages/color changes
             setTimeout (
                 () => {
                     // Remove borders designating what was selected
@@ -111,14 +110,14 @@ function playGame() {
                         btn.classList.remove("tied", "chosen-by-computer", "chosen-by-human");
                     });
 
-                    // Check if winner and reset scores
+                    // Check for a game winner and reset scores
                     if (humanScore >= 5 || computerScore >= 5) {
                         declareWinner();
                         humanScore = 0, computerScore = 0;
                         humanScoreBoard.querySelector(".player-score").textContent = 0, computerScoreBoard.querySelector(".player-score").textContent = 0;
-                        // gameMessage.textContent = originalGameMsg;
                     }
 
+                    // Reset round messages and colors
                     winLoseMsg.classList.remove("tied-text", "win-text", "lose-text");
                     winLoseMsg.textContent = originalInstruct;
                     gameMessage.textContent = originalGameMsg;
@@ -183,12 +182,11 @@ function changeImage(losingSelection, resetTime) {
 
 
 // Toggling off and on click events
-
 function disableClicks() {
     document.querySelectorAll('.game-button').forEach(btn => {
         btn.style.pointerEvents = 'none';
     });
-    setTimeout(enableClicks, pauseTime); // Re-enable after 1 seconds
+    setTimeout(enableClicks, pauseTime); // Re-enable after 1 second
 }
 
 function enableClicks() {
@@ -196,8 +194,6 @@ function enableClicks() {
         btn.style.pointerEvents = 'auto';
     });
 }
-
-// element.addEventListener('click', disableClick);
 
 
 
